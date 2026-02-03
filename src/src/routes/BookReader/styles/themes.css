@@ -1,0 +1,287 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   THEMES - Color System
+   Book Magic Reader - Professional Book Reader & Editor
+   
+   Three themes: Dark (default), Sepia (reading), Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THEME: DARK (Default)
+   Inspired by Notion's dark mode
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root,
+[data-theme="dark"] {
+  /* ─────────────────────────────────────────────────────────────────────────
+     BACKGROUND LAYERS
+     ───────────────────────────────────────────────────────────────────────── */
+  --bg-app: #191919;
+  --bg-surface: #202020;
+  --bg-elevated: #252525;
+  --bg-hover: #2a2a2a;
+  --bg-active: #2f2f2f;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --bg-backdrop: rgba(0, 0, 0, 0.8);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     TEXT COLORS
+     ───────────────────────────────────────────────────────────────────────── */
+  --text-primary: #ebebeb;
+  --text-secondary: #9b9b9b;
+  --text-tertiary: #6b6b6b;
+  --text-muted: #4a4a4a;
+  --text-inverse: #191919;
+  --text-link: #529cca;
+  --text-link-hover: #6bb3dd;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     BORDERS
+     ───────────────────────────────────────────────────────────────────────── */
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --border-focus: #2383e2;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     INTERACTIVE STATES
+     ───────────────────────────────────────────────────────────────────────── */
+  --interactive-hover: rgba(255, 255, 255, 0.06);
+  --interactive-active: rgba(255, 255, 255, 0.1);
+  --interactive-selected: rgba(35, 131, 226, 0.15);
+  --interactive-disabled: rgba(255, 255, 255, 0.03);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     ACCENT COLORS
+     ───────────────────────────────────────────────────────────────────────── */
+  --accent-primary: #2383e2;
+  --accent-primary-hover: #1a6fc2;
+  --accent-primary-active: #155ba3;
+  --accent-primary-muted: rgba(35, 131, 226, 0.15);
+  --accent-primary-subtle: rgba(35, 131, 226, 0.08);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     SEMANTIC COLORS
+     ───────────────────────────────────────────────────────────────────────── */
+  /* Success */
+  --color-success: #4ade80;
+  --color-success-hover: #3dcc70;
+  --color-success-muted: rgba(74, 222, 128, 0.15);
+  --color-success-text: #4ade80;
+  
+  /* Warning */
+  --color-warning: #fbbf24;
+  --color-warning-hover: #e5ac1c;
+  --color-warning-muted: rgba(251, 191, 36, 0.15);
+  --color-warning-text: #fbbf24;
+  
+  /* Error */
+  --color-error: #f87171;
+  --color-error-hover: #e65c5c;
+  --color-error-muted: rgba(248, 113, 113, 0.15);
+  --color-error-text: #f87171;
+  
+  /* Info */
+  --color-info: #60a5fa;
+  --color-info-hover: #4b93e8;
+  --color-info-muted: rgba(96, 165, 250, 0.15);
+  --color-info-text: #60a5fa;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     SYNTAX HIGHLIGHTING (Code)
+     ───────────────────────────────────────────────────────────────────────── */
+  --syntax-keyword: #c678dd;
+  --syntax-string: #98c379;
+  --syntax-number: #d19a66;
+  --syntax-function: #61afef;
+  --syntax-comment: #5c6370;
+  --syntax-operator: #56b6c2;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     PAGE COLORS (Reading Surface)
+     ───────────────────────────────────────────────────────────────────────── */
+  --page-bg: #2a2a2a;
+  --page-bg-editing: #2d2d2d;
+  --page-text: #e0e0e0;
+  --page-text-secondary: #888888;
+  --page-border: rgba(255, 255, 255, 0.08);
+  --page-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     SELECTION
+     ───────────────────────────────────────────────────────────────────────── */
+  --selection-bg: rgba(35, 131, 226, 0.3);
+  --selection-text: inherit;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     SCROLLBAR
+     ───────────────────────────────────────────────────────────────────────── */
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     FOCUS RING
+     ───────────────────────────────────────────────────────────────────────── */
+  --focus-ring: 0 0 0 2px var(--accent-primary);
+  --focus-ring-offset: 0 0 0 4px var(--bg-app);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THEME: SEPIA (Reading Optimized)
+   Warm colors for extended reading sessions
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="sepia"] {
+  /* Backgrounds */
+  --bg-app: #f4ecd8;
+  --bg-surface: #efe7d3;
+  --bg-elevated: #e8dfca;
+  --bg-hover: #e0d7c2;
+  --bg-active: #d8cfba;
+  --bg-overlay: rgba(92, 75, 55, 0.4);
+  --bg-backdrop: rgba(92, 75, 55, 0.7);
+
+  /* Text */
+  --text-primary: #5c4b37;
+  --text-secondary: #7a6a56;
+  --text-tertiary: #9a8a76;
+  --text-muted: #b5a590;
+  --text-inverse: #f4ecd8;
+  --text-link: #8b6914;
+  --text-link-hover: #a47d18;
+
+  /* Borders */
+  --border-default: rgba(92, 75, 55, 0.15);
+  --border-subtle: rgba(92, 75, 55, 0.08);
+  --border-strong: rgba(92, 75, 55, 0.25);
+  --border-focus: #8b6914;
+
+  /* Interactive */
+  --interactive-hover: rgba(92, 75, 55, 0.08);
+  --interactive-active: rgba(92, 75, 55, 0.12);
+  --interactive-selected: rgba(139, 105, 20, 0.15);
+  --interactive-disabled: rgba(92, 75, 55, 0.04);
+
+  /* Accent */
+  --accent-primary: #8b6914;
+  --accent-primary-hover: #7a5c12;
+  --accent-primary-active: #6a5010;
+  --accent-primary-muted: rgba(139, 105, 20, 0.15);
+
+  /* Page */
+  --page-bg: #faf4e8;
+  --page-bg-editing: #f8f2e4;
+  --page-text: #433222;
+  --page-text-secondary: #6a5a4a;
+  --page-border: rgba(92, 75, 55, 0.1);
+  --page-shadow: 0 4px 24px rgba(92, 75, 55, 0.15);
+
+  /* Selection */
+  --selection-bg: rgba(139, 105, 20, 0.25);
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(92, 75, 55, 0.2);
+  --scrollbar-thumb-hover: rgba(92, 75, 55, 0.35);
+
+  /* Focus Ring */
+  --focus-ring: 0 0 0 2px var(--accent-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THEME: LIGHT
+   Clean, bright theme
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-app: #ffffff;
+  --bg-surface: #f7f7f5;
+  --bg-elevated: #ffffff;
+  --bg-hover: #f0f0ee;
+  --bg-active: #e8e8e6;
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+  --bg-backdrop: rgba(0, 0, 0, 0.6);
+
+  /* Text */
+  --text-primary: #37352f;
+  --text-secondary: #787774;
+  --text-tertiary: #9b9a97;
+  --text-muted: #c7c6c4;
+  --text-inverse: #ffffff;
+  --text-link: #2383e2;
+  --text-link-hover: #1a6fc2;
+
+  /* Borders */
+  --border-default: rgba(55, 53, 47, 0.12);
+  --border-subtle: rgba(55, 53, 47, 0.06);
+  --border-strong: rgba(55, 53, 47, 0.2);
+  --border-focus: #2383e2;
+
+  /* Interactive */
+  --interactive-hover: rgba(55, 53, 47, 0.04);
+  --interactive-active: rgba(55, 53, 47, 0.08);
+  --interactive-selected: rgba(35, 131, 226, 0.1);
+  --interactive-disabled: rgba(55, 53, 47, 0.02);
+
+  /* Accent - Same as dark */
+  --accent-primary: #2383e2;
+  --accent-primary-hover: #1a6fc2;
+  --accent-primary-active: #155ba3;
+  --accent-primary-muted: rgba(35, 131, 226, 0.1);
+
+  /* Page */
+  --page-bg: #ffffff;
+  --page-bg-editing: #fafafa;
+  --page-text: #1a1a1a;
+  --page-text-secondary: #555555;
+  --page-border: rgba(0, 0, 0, 0.08);
+  --page-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+
+  /* Selection */
+  --selection-bg: rgba(35, 131, 226, 0.2);
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.25);
+
+  /* Focus Ring */
+  --focus-ring: 0 0 0 2px var(--accent-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLOBAL STYLES USING THEME TOKENS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Selection */
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Focus Visible */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  box-shadow: var(--focus-ring);
+}

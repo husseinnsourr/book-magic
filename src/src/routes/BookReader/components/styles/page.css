@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOOK READER - A4 Page Styles (Notion Theme)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.page-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  min-height: 100%;
+  overflow: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   A4 PAGE
+   ═══════════════════════════════════════════════════════════════════════════ */
+.a4-page {
+  width: var(--a4-width);
+  min-height: var(--a4-height);
+  background: var(--page-bg);
+  color: var(--page-text);
+  border-radius: 3px;
+  box-shadow: 
+    0 0 0 1px var(--page-border),
+    0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 60px;
+  position: relative;
+  direction: rtl;
+  flex-shrink: 0;
+}
+
+/* Edit mode indicator */
+.a4-page.editing {
+  box-shadow: 
+    0 0 0 2px var(--notion-accent),
+    0 4px 24px rgba(35, 131, 226, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE CONTENT - Read Mode
+   ═══════════════════════════════════════════════════════════════════════════ */
+.page-text {
+  line-height: 1.8;
+  color: var(--page-text);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 16px;
+  min-height: 200px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE CONTENT - Edit Mode
+   ═══════════════════════════════════════════════════════════════════════════ */
+.page-editor {
+  width: 100%;
+  min-height: 400px;
+  background: transparent;
+  border: none;
+  color: var(--page-text);
+  line-height: 1.8;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.page-editor:focus {
+  outline: none;
+}
+
+.page-editor:empty::before {
+  content: attr(data-placeholder);
+  color: var(--page-text-secondary);
+  opacity: 0.6;
+}
+
+/* Character Limit Indicator */
+.char-limit-indicator {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-size: 11px;
+  color: var(--page-text-secondary);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  direction: ltr;
+}
+
+.char-limit-indicator.warning {
+  color: var(--notion-warning);
+  background: rgba(251, 191, 36, 0.15);
+}
+
+.char-limit-indicator.danger {
+  color: var(--notion-error);
+  background: rgba(248, 113, 113, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   EMPTY STATE
+   ═══════════════════════════════════════════════════════════════════════════ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: var(--page-text-secondary);
+}
+
+.empty-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+  opacity: 0.4;
+}
+
+.empty-state p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.empty-hint {
+  font-size: 13px !important;
+  margin-top: 8px !important;
+  opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media print {
+  .a4-page {
+    box-shadow: none;
+    margin: 0;
+    padding: 20mm;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    background: white !important;
+    color: black !important;
+  }
+  
+  .page-text,
+  .page-editor {
+    color: black !important;
+  }
+  
+  .char-limit-indicator {
+    display: none !important;
+  }
+}

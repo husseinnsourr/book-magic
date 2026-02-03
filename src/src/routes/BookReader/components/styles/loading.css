@@ -1,0 +1,49 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOOK READER - Loading States (Notion Theme)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.reader-loading {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--notion-text-secondary);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+  color: var(--notion-accent);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.link-btn {
+  color: var(--notion-accent);
+  font-size: 14px;
+  transition: all 0.15s;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+.progress-track {
+  width: 240px;
+  height: 4px;
+  background: var(--notion-bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--notion-accent);
+  transition: width 0.3s ease-out;
+}

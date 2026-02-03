@@ -1,0 +1,189 @@
+/* Dashboard Monochrome Look */
+.dashboard {
+  padding: var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.welcome-text h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  line-height: 1.5; /* Added for Arabic */
+  margin-bottom: var(--spacing-xs);
+  color: #ffffff; /* White text */
+}
+
+.welcome-subtitle {
+  color: #a1a1aa; /* Light gray text */
+  font-size: var(--font-size-md);
+}
+
+/* Stats Categories - Monochrome Cards */
+.stats-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.stat-card {
+  background: #18181b; /* Dark Gray (Zinc 900) */
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  border: 1px solid #27272a; /* Zinc 800 */
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent Strip - Darker Gray */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 4px; height: 100%;
+  background: #3f3f46; /* Zinc 700 */
+  transition: width 0.2s ease;
+}
+
+.stat-card:hover {
+  border-color: #3f3f46; /* Zinc 700 */
+  transform: translateY(-2px);
+}
+
+.stat-icon-bg {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: #27272a; /* Zinc 800 */
+  color: #e4e4e7; /* Zinc 200 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: 1px solid #3f3f46;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.5; /* Increased from 1 for Arabic support */
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.stat-desc {
+  font-size: 13px;
+  color: #a1a1aa; /* Zinc 400 */
+  font-weight: 500;
+}
+
+/* Recent Section */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-header-row h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.btn-link {
+  color: #d4d4d8; /* Zinc 300 */
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.recent-book-card {
+  background: #18181b; /* Zinc 900 */
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  border: 1px solid #27272a; /* Zinc 800 */
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.recent-book-card:hover {
+  border-color: #52525b; /* Zinc 600 */
+  transform: translateY(-2px);
+}
+
+.recent-cover {
+  height: 160px;
+  background: #27272a; /* Zinc 800 */
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #71717a; /* Zinc 500 */
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  border: 1px solid #3f3f46;
+}
+
+.recent-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recent-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #f4f4f5; /* Zinc 100 */
+}
+
+.recent-progress-text {
+  font-size: 11px;
+  color: #a1a1aa; /* Zinc 400 */
+  display: block;
+  margin-bottom: 6px;
+}
+
+.mini-progress-bar {
+  height: 4px;
+  background: #27272a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.mini-progress-bar .fill {
+  height: 100%;
+  background: #e4e4e7; /* Zinc 200 - White/Gray for progress */
+  border-radius: 2px;
+}

@@ -1,0 +1,320 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Feedback Components Styles
+   Save Indicator, Toast, Error Banner
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@import '../../../styles/tokens.css';
+@import '../../../styles/themes.css';
+@import '../../../styles/animations.css';
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Save Indicator
+   ───────────────────────────────────────────────────────────────────────── */
+
+.save-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.save-indicator--saving {
+  color: var(--text-secondary);
+}
+
+.save-indicator--saved {
+  color: var(--color-success);
+}
+
+.save-indicator--error {
+  color: var(--color-error);
+  background: var(--color-error-muted);
+}
+
+.save-indicator--idle {
+  color: var(--text-muted);
+}
+
+.save-text {
+  white-space: nowrap;
+}
+
+.save-text--muted {
+  opacity: 0.8;
+}
+
+/* Icons */
+.icon-saving {
+  color: var(--text-secondary);
+}
+
+.icon-saved {
+  color: var(--color-success);
+}
+
+.icon-error {
+  color: var(--color-error);
+}
+
+.icon-idle {
+  color: var(--text-muted);
+}
+
+/* Retry Button */
+.retry-btn {
+  padding: var(--space-0-5) var(--space-2);
+  background: var(--color-error);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.retry-btn:hover {
+  background: var(--color-error-hover);
+}
+
+/* Spin Animation */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Checkmark Animation */
+.animate-checkmark {
+  animation: popIn var(--duration-fast) var(--ease-out-back);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Error Banner
+   ───────────────────────────────────────────────────────────────────────── */
+
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-error-muted);
+  border-bottom: 1px solid var(--color-error);
+  animation: slideDown var(--duration-normal) var(--ease-out-expo);
+}
+
+.error-banner__icon {
+  color: var(--color-error);
+  flex-shrink: 0;
+}
+
+.error-banner__content {
+  flex: 1;
+}
+
+.error-banner__message {
+  color: var(--color-error-text);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+}
+
+.error-banner__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.error-banner__btn {
+  padding: var(--space-1-5) var(--space-3);
+  background: var(--color-error);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.error-banner__btn:hover {
+  background: var(--color-error-hover);
+}
+
+.error-banner__btn--secondary {
+  background: transparent;
+  color: var(--color-error);
+}
+
+.error-banner__btn--secondary:hover {
+  background: rgba(248, 113, 113, 0.1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Toast Notification
+   ───────────────────────────────────────────────────────────────────────── */
+
+.toast-container {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+[dir="rtl"] .toast-container {
+  right: auto;
+  left: var(--space-6);
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 280px;
+  max-width: 400px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  animation: toastIn var(--duration-normal) var(--ease-out-expo);
+}
+
+.toast--success {
+  border-color: var(--color-success);
+}
+
+.toast--error {
+  border-color: var(--color-error);
+}
+
+.toast--warning {
+  border-color: var(--color-warning);
+}
+
+.toast--info {
+  border-color: var(--color-info);
+}
+
+.toast__icon {
+  flex-shrink: 0;
+}
+
+.toast__icon--success { color: var(--color-success); }
+.toast__icon--error { color: var(--color-error); }
+.toast__icon--warning { color: var(--color-warning); }
+.toast__icon--info { color: var(--color-info); }
+
+.toast__content {
+  flex: 1;
+}
+
+.toast__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.toast__message {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin-top: var(--space-0-5);
+}
+
+.toast__close {
+  padding: var(--space-1);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: 
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.toast__close:hover {
+  color: var(--text-primary);
+  background: var(--interactive-hover);
+}
+
+.toast--exiting {
+  animation: toastOut var(--duration-fast) var(--ease-in) forwards;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+[dir="rtl"] .toast {
+  animation-name: toastInRTL;
+}
+
+[dir="rtl"] .toast--exiting {
+  animation-name: toastOutRTL;
+}
+
+@keyframes toastInRTL {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastOutRTL {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}

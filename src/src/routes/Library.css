@@ -1,0 +1,1194 @@
+/* Library.css - Notion Style Refactor */
+
+/* Main Container */
+.library.notion-theme {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #111111; /* Deeper dark for more premium feel */
+  color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  font-family: 'Inter', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+  line-height: 1.6; /* Better Arabic readability */
+}
+
+/* Scrollable Content Area */
+.library-content.notion-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0; /* Padding moved to sections */
+  scroll-behavior: smooth;
+}
+
+/* 1. Header Section (Cover + Icon + Title) */
+.notion-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.notion-page-info {
+  position: relative;
+  padding: 0 clamp(16px, 12vw, 240px); /* Tighter max padding for large screens */
+  margin-top: -38px; /* Offset to overlap cover */
+  display: flex;
+  flex-direction: column;
+  z-index: 60;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-scrolled .notion-page-info {
+  margin-top: -80px;
+  transform: scale(0.9);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.library {
+  padding-bottom: 80px;
+  background: #111111;
+  min-height: 100vh;
+}
+
+/* Full page layout when TopBar is hidden */
+.full-page {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.full-page .notion-header {
+  margin-top: 0;
+}
+.notion-cover {
+  height: 220px;
+  width: 100%;
+  position: relative;
+  background: #202020;
+  overflow: hidden;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-scrolled .notion-cover {
+  height: 60px;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  opacity: 0.8;
+}
+
+.cover-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #191919 0%, transparent 100%);
+  opacity: 0.9;
+}
+
+.cover-controls-overlay {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  z-index: 100;
+}
+
+.cover-control-btn {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.cover-control-btn:hover {
+  background: rgba(46, 170, 220, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.reposition-controls {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 30;
+  gap: 16px;
+}
+
+.position-slider {
+  width: 200px;
+  accent-color: white;
+}
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none !important;
+  }
+}
+
+.btn-save-position {
+  background: white;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.header-top-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.header-dashboard-actions.inline-actions {
+  position: absolute;
+  top: 10px;
+  inset-inline-end: 12px; /* Top Left in RTL (End of the line) */
+  display: flex;
+  flex-direction: row-reverse; /* Expand inwards */
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.dash-menu-trigger {
+  width: 44px;
+  height: 44px;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.dash-menu-trigger:hover {
+  background: rgba(46, 170, 220, 0.3);
+  border-color: rgba(46, 170, 220, 0.5);
+  transform: scale(1.05);
+}
+
+.mobile-action-bar-wrapper {
+  opacity: 0;
+  transform: translateX(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header-dashboard-actions.inline-actions.active .mobile-action-bar-wrapper {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+}
+
+.mobile-action-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(32px) saturate(220%);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8),
+              inset 0 0 10px rgba(255, 255, 255, 0.03);
+  transform-origin: right center; /* Expand from side into screen */
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dash-icon-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(40, 40, 40, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50% !important;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.dash-icon-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: scale(1.1) rotate(4deg);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.dash-icon-btn.profile {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+}
+
+.view-switcher-dynamic {
+  position: relative;
+}
+
+.view-mode-popover {
+  top: calc(100% + 12px);
+  inset-inline-end: 0;
+  width: 160px;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8);
+}
+
+.action-icon-btn.new-icon.square {
+  background: rgba(46, 170, 220, 0.25);
+  color: #2eaadc;
+  border-radius: 8px;
+  border: 1px solid rgba(46, 170, 220, 0.3);
+  width: 36px;
+  height: 36px;
+}
+
+.action-icon-btn.new-icon.square:hover {
+  background: #2eaadc;
+  color: white;
+  transform: translateY(-2px) rotate(0deg); /* No rotate as requested to be a simple square */
+  box-shadow: 0 4px 15px rgba(46, 170, 220, 0.4);
+}
+
+.view-btn {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.view-btn:hover {
+  color: white;
+}
+
+.page-icon-box {
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 18px; /* Slightly smoother */
+  margin-bottom: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: visible;
+  z-index: 10;
+  line-height: 0; /* Fixes emoji/icon baseline shift */
+}
+
+.is-scrolled .page-icon-box {
+  transform: scale(0.6) translateY(-40px);
+  opacity: 0.8;
+}
+
+.library-custom-icon, .library-emoji {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.library-custom-icon svg {
+  display: block;
+}
+
+.page-icon-box::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, rgba(46, 170, 220, 0.2), transparent, rgba(46, 170, 220, 0.2));
+  border-radius: 14px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.page-icon-box.shadow-glow:hover::before {
+  opacity: 1;
+}
+
+.page-icon-box.clickable {
+  cursor: pointer;
+  position: relative;
+}
+
+.page-icon-box.clickable:hover {
+  transform: scale(1.05);
+  background: #2a2a2a;
+}
+
+.icon-edit-hint {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: #2eaadc;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.page-icon-box.clickable:hover .icon-edit-hint {
+  opacity: 1;
+}
+
+.page-icon-box.shadow-glow {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); /* Soft white glow for icon */
+}
+
+.page-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: text;
+}
+
+.title-edit-icon {
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.2);
+  transition: opacity 0.2s;
+}
+
+.page-title:hover .title-edit-icon {
+  opacity: 1;
+}
+
+.page-title-input {
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0 0 8px 0;
+  width: 100%;
+  font-family: inherit;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-description {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+}
+
+.desc-text-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 2px 6px;
+  margin-left: -6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.desc-text-wrapper:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.desc-edit-icon {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.desc-text-wrapper:hover .desc-edit-icon {
+  opacity: 1;
+}
+
+.tab-title-text {
+  line-height: 1.4; /* Better for Arabic fonts */
+  display: flex;
+  align-items: center;
+}
+
+.page-desc-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  outline: none;
+  padding: 0;
+  width: 200px;
+}
+
+.dot-separator {
+  font-size: 6px;
+  opacity: 0.5;
+}
+
+/* 2. Database Toolbar (Sticky) */
+.database-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px clamp(16px, 12vw, 240px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 16px;
+  gap: 16px;
+  transition: padding 0.3s;
+}
+
+.is-scrolled .database-toolbar {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px);
+}
+
+.quick-tags-container {
+  padding: 8px clamp(16px, 8vw, 96px); /* Responsive padding */
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.quick-tags-container::-webkit-scrollbar {
+  display: none;
+}
+
+.quick-tag {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-tag svg {
+  opacity: 0.6;
+}
+
+.quick-tag:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.quick-tag:hover svg {
+  opacity: 1;
+}
+
+.page-title-input, .page-desc-input {
+  text-align: inherit; /* Respect RTL */
+}
+
+/* Left side (Tabs) - In RTL this is Right */
+.tabs-desktop-only {
+  display: flex;
+  gap: 4px;
+}
+
+.tabs-mobile-only {
+  display: none;
+}
+
+.view-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: visible; /* Prevent clipping popovers */
+}
+
+.view-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 16px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  position: relative;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.view-tab svg {
+  opacity: 0.9;
+  margin-inline-start: 8px; 
+  display: block;
+  flex-shrink: 0;
+  width: 16px; /* Slightly larger to match text better */
+  height: 16px;
+}
+
+.view-tab.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.view-tab.active svg {
+  opacity: 1;
+  color: #ffffff;
+}
+
+.view-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 12px;
+  right: 12px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+  transform: scaleX(1); /* Ensure stable bar */
+}
+
+/* Right side (Actions) - In RTL this is Left */
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.primary-actions-group, .secondary-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.primary-actions-group {
+  background: rgba(46, 170, 220, 0.05); /* Very subtle blue tint */
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(46, 170, 220, 0.1);
+  box-shadow: 0 0 15px rgba(46, 170, 220, 0.05);
+}
+
+/* Search */
+.table-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Unified border style */
+  border-radius: 8px;
+  padding: 0 8px;
+  width: 180px;
+  transition: all 0.2s;
+}
+
+.table-search.active,
+.table-search:focus-within {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  width: 240px;
+}
+
+.search-icon-sm {
+  color: rgba(255, 255, 255, 0.4);
+  min-width: 14px;
+}
+
+.table-search input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  width: 100%;
+  font-size: 13px;
+  margin: 0;
+  outline: none;
+}
+
+.separator-vertical {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 4px;
+}
+
+/* Icon Buttons (Filter/Sort) */
+.action-icon-btn {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.action-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-only-sparkle {
+  display: none;
+}
+
+.mobile-only-sparkle.active {
+  color: #2eaadc;
+  background: rgba(46, 170, 220, 0.1);
+}
+
+@media (max-width: 768px) {
+  .mobile-only-sparkle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Popovers */
+.toolbar-popovers-area {
+  position: relative;
+  margin: 0 clamp(16px, 8vw, 96px); /* Responsive padding */
+  height: 0;
+  z-index: 100;
+}
+
+.popover-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.notion-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  inset-inline-start: 50%;
+  transform: translateX(-50%) scale(1); /* Reset transform for stability */
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  min-width: 180px;
+  max-width: 260px;
+  padding: 6px;
+  z-index: 1000;
+  transform-origin: top center;
+  pointer-events: auto;
+}
+
+/* Ensure popover doesn't go off-screen on the right/left */
+.popover-wrapper:last-child .notion-popover {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  transform: scale(1);
+}
+
+.popover-wrapper:first-child .notion-popover {
+  inset-inline-start: 0;
+  transform: scale(1);
+}
+
+.popover-header {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 4px;
+}
+
+.sections-popover {
+  width: 160px;
+}
+
+.popover-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 38px;
+  padding: 0 12px;
+  width: 100%;
+  text-align: right;
+  flex-direction: row-reverse; /* Put icon on the left (trailing) */
+  align-items: center; 
+  justify-content: flex-end; /* Align content to the right (start) */
+  background: transparent;
+  gap: 8px; /* Consistent gap */
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.popover-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.popover-item.active {
+  background: rgba(46, 170, 220, 0.12);
+  color: #2eaadc;
+}
+
+/* Grid View */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 32px 24px;
+  padding: 16px clamp(16px, 8vw, 96px) 32px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+}
+
+.book-cover {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background: #252525;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Empty State */
+.library-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
+/* Mobile View Refinements */
+@media (max-width: 768px) {
+  .tabs-desktop-only {
+    display: none;
+  }
+  .tabs-mobile-only {
+    display: flex;
+    gap: 0;
+    align-items: center;
+  }
+
+  .desktop-search {
+    display: none !important; /* Hide search as requested */
+  }
+
+  .header-top-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -15px;
+    position: relative;
+  }
+
+  /* Dashboard Actions Bar on Mobile - Restored to Top Left */
+  .header-dashboard-actions.notion-page-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  height: 50px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  z-index: 100;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  opacity: 0.3;
+}
+
+.breadcrumb-current {
+  color: #ffffff;
+}
+
+.notion-page-actions .action-icon-btn {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.notion-page-actions .action-icon-btn:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+  .header-dashboard-actions.inline-actions {
+    position: absolute;
+    top: 10px;
+    inset-inline-end: 12px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mobile-action-bar-wrapper {
+    position: static;
+    transform: none;
+    display: block;
+  }
+
+  .header-dashboard-actions.inline-actions .mobile-action-bar-wrapper {
+    opacity: 0;
+    transform: scale(0.8) translateX(20px); /* Animate inwards from left/end */
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .header-dashboard-actions.inline-actions.active .mobile-action-bar-wrapper {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    pointer-events: auto;
+  }
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-50%) translateY(-10px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(0) scale(1); 
+  }
+}
+
+.animate-scaleIn { 
+  animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+  .mobile-action-bar {
+    padding: 4px 8px;
+    gap: 8px;
+  }
+
+  .dash-icon-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .database-toolbar {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .notion-page-info {
+    padding: 0 20px;
+  }
+  
+  .database-toolbar {
+    padding: 12px 16px;
+  }
+  
+  .primary-actions-group {
+    padding: 2px;
+  }
+
+  .quick-tags-container {
+    display: none !important; /* Remove the bar below as requested */
+  }
+
+  .view-tab {
+    height: 48px;
+    font-size: 14px;
+    padding: 0 8px;
+    min-width: 80px; /* Prevent too much jumping */
+  }
+
+  .tabs-mobile-only .view-tab.active::after {
+    left: 4px;
+    right: 4px;
+  }
+
+  .toolbar-actions {
+    gap: 4px;
+  }
+
+  .action-icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .notion-popover {
+    min-width: 200px;
+    max-width: 90vw;
+  }
+}
+
+/* 3. Mobile Sidebar Drawer */
+.mobile-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.mobile-sidebar-drawer {
+  width: 280px;
+  height: 100%;
+  background: #181818;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  transform: translateX(-100%);
+}
+
+.animate-slideLeft {
+  animation: slideLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.drawer-header {
+  height: 60px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2eaadc;
+  letter-spacing: -0.02em;
+}
+
+.drawer-nav {
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawer-nav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: right;
+}
+
+.drawer-nav button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.drawer-nav button.active {
+  background: rgba(46, 170, 220, 0.1);
+  color: #2eaadc;
+}
+
+.drawer-nav button span {
+  flex: 1;
+}
+
+/* 4. Integrated Search */
+.search-integrated {
+  display: flex;
+  align-items: center;
+  margin-inline-start: 12px;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0 12px;
+  height: 34px;
+  width: 180px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-wrapper.expanded {
+  width: 240px;
+  border-color: rgba(46, 170, 220, 0.4);
+  background: rgba(46, 170, 220, 0.05);
+}
+
+.search-wrapper input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 13.5px;
+  width: 100%;
+  padding: 0;
+}
+
+.search-icon-inline {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.search-trigger {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .search-wrapper {
+    width: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    opacity: 0;
+  }
+  
+  .search-wrapper.expanded {
+    width: 220px;
+    padding: 0 12px;
+    border: 1px solid rgba(46, 170, 220, 0.4);
+    opacity: 1;
+    position: absolute;
+    inset-inline-start: 16px;
+    z-index: 200;
+    background: #111111; /* Ensure it covers other tabs on mobile */
+  }
+
+  .breadcrumb-nav {
+    display: none; /* Hide breadcrumbs on very small screens to save space if needed */
+  }
+}
+
+/* 5. Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(10px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.primary-glow {
+  box-shadow: 0 0 15px rgba(46, 170, 220, 0.4);
+}

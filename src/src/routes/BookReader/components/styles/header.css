@@ -1,0 +1,55 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOOK READER - Header Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.reader-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 20px;
+  background: var(--reader-surface);
+  border-bottom: 1px solid var(--reader-border);
+  backdrop-filter: blur(12px);
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--reader-text);
+  letter-spacing: -0.2px;
+}
+
+.header-author {
+  font-size: 11px;
+  color: var(--reader-text-tertiary);
+}
+
+.header-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--reader-text-secondary);
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+
+.header-btn:hover {
+  background: var(--reader-surface-hover);
+  color: var(--reader-text);
+}

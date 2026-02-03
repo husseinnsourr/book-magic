@@ -1,0 +1,74 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOOK READER - Floating Controls (Notion Theme)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.floating-controls {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: var(--notion-surface);
+  border: 1px solid var(--notion-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.control-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--notion-border);
+  margin: 0 8px;
+}
+
+.ctrl-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--notion-text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ctrl-btn:hover:not(:disabled) {
+  background: var(--notion-surface-hover);
+  color: var(--notion-text);
+}
+
+.ctrl-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ctrl-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--notion-text);
+  min-width: 40px;
+  text-align: center;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media print {
+  .floating-controls {
+    display: none !important;
+  }
+}

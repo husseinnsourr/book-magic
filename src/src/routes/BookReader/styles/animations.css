@@ -1,0 +1,368 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS - Keyframes & Utility Classes
+   Book Magic Reader
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FADE ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+}
+
+.animate-fadeOut {
+  animation: fadeOut var(--duration-normal) var(--ease-in) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIDE ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(8px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes slideDown {
+  from { 
+    transform: translateY(-8px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes slideLeft {
+  from { 
+    transform: translateX(8px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes slideRight {
+  from { 
+    transform: translateX(-8px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp var(--duration-normal) var(--ease-out-expo) forwards;
+}
+
+.animate-slideDown {
+  animation: slideDown var(--duration-normal) var(--ease-out-expo) forwards;
+}
+
+.animate-slideLeft {
+  animation: slideLeft var(--duration-normal) var(--ease-out-expo) forwards;
+}
+
+.animate-slideRight {
+  animation: slideRight var(--duration-normal) var(--ease-out-expo) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCALE ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes scaleIn {
+  from { 
+    transform: scale(0.95); 
+    opacity: 0; 
+  }
+  to { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+@keyframes scaleOut {
+  from { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+  to { 
+    transform: scale(0.95); 
+    opacity: 0; 
+  }
+}
+
+@keyframes popIn {
+  0% { 
+    transform: scale(0.8); 
+    opacity: 0; 
+  }
+  70% { 
+    transform: scale(1.05); 
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+.animate-scaleIn {
+  animation: scaleIn var(--duration-fast) var(--ease-out-expo) forwards;
+}
+
+.animate-popIn {
+  animation: popIn var(--duration-normal) var(--ease-out-back) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SPECIAL EFFECTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-pulse {
+  animation: pulse 2s var(--ease-in-out) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s var(--ease-linear) infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s var(--ease-out) forwards;
+}
+
+.animate-bounce {
+  animation: bounce 0.5s var(--ease-out) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE TURN ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes pageTurnNext {
+  0% { 
+    transform: perspective(1200px) rotateY(0deg);
+    transform-origin: left center;
+  }
+  50% { 
+    transform: perspective(1200px) rotateY(-3deg);
+    transform-origin: left center;
+  }
+  100% { 
+    transform: perspective(1200px) rotateY(0deg);
+    transform-origin: left center;
+  }
+}
+
+@keyframes pageTurnPrev {
+  0% { 
+    transform: perspective(1200px) rotateY(0deg);
+    transform-origin: right center;
+  }
+  50% { 
+    transform: perspective(1200px) rotateY(3deg);
+    transform-origin: right center;
+  }
+  100% { 
+    transform: perspective(1200px) rotateY(0deg);
+    transform-origin: right center;
+  }
+}
+
+@keyframes pageSlideNext {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes pageSlidePrev {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+}
+
+.animate-pageTurnNext {
+  animation: pageTurnNext var(--duration-slow) var(--ease-out) forwards;
+}
+
+.animate-pageTurnPrev {
+  animation: pageTurnPrev var(--duration-slow) var(--ease-out) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SELECTION TOOLBAR ANIMATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes toolbarAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(calc(-100% + 8px)) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-100%) scale(1);
+  }
+}
+
+@keyframes toolbarDisappear {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-100%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(calc(-100% + 8px)) scale(0.95);
+  }
+}
+
+.animate-toolbarAppear {
+  animation: toolbarAppear var(--duration-fast) var(--ease-out-expo) forwards;
+}
+
+.animate-toolbarDisappear {
+  animation: toolbarDisappear var(--duration-fast) var(--ease-in) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MICRO-INTERACTIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Button Press Effect */
+.interactive-press {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.interactive-press:active {
+  transform: scale(0.97);
+}
+
+/* Hover Lift Effect */
+.interactive-lift {
+  transition: 
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.interactive-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Icon Glow on Hover */
+.icon-glow {
+  transition: filter var(--duration-fast) var(--ease-out);
+}
+
+.icon-glow:hover {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* Smooth Color Transition */
+.transition-colors {
+  transition: 
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+/* Smooth All Transition */
+.transition-all {
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LOADING SKELETON
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface) 0%,
+    var(--bg-elevated) 50%,
+    var(--bg-surface) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SAVE INDICATOR ANIMATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 16;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-checkmark path {
+  stroke-dasharray: 16;
+  stroke-dashoffset: 16;
+  animation: checkmark 0.3s var(--ease-out) forwards;
+}

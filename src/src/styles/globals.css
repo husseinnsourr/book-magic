@@ -1,0 +1,273 @@
+/* ===================================
+   Book Magic - Global Styles
+   Notion-Style Dark Mode Design
+   =================================== */
+
+/* Google Fonts - Simple defaults */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'ArbFonts';
+  src: url('../assets/fonts/ArbFONTS-94PT-Bold-Heading.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lifta';
+  src: url('../assets/fonts/Lifta-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Elephant';
+  src: url('../assets/fonts/ELEPHNT.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Madeira';
+  src: url('../assets/fonts/Madeira-Cd-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* CSS Variables - Dark Theme */
+:root {
+  /* Colors - Softer Gray/White */
+  --color-background: #191919;
+  --color-surface: #202020;
+  --color-surface-variant: #252525;
+  --color-surface-hover: #2f2f2f;
+  --color-primary: #e8e8e8;
+  --color-secondary: #9a9a9a;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #9a9a9a;
+  --color-text-disabled: #5a5a5a;
+  --color-border: #333333;
+  --color-divider: #2a2a2a;
+  --color-icon: #d0d0d0;
+  --color-icon-secondary: #9a9a9a;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+  /* Typography - Cairo (AR) and Inter (EN) as defaults */
+  --font-arabic-default: "Cairo", sans-serif;
+  --font-arabic-alt: "Cairo", sans-serif; /* Fallback to clean font */
+  --font-arabic-alt2: "Lifta", "Cairo", sans-serif;
+  --font-english-default: "Inter", sans-serif;
+  --font-english-alt: "Elephant", "Inter", sans-serif;
+  --font-english-alt2: "Madeira", "Inter", sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  /* Spacing - Compact */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 0.75rem;
+  --spacing-lg: 1rem;
+  --spacing-xl: 1.5rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Transitions */
+  --transition-fast: 100ms ease;
+  --transition-normal: 200ms ease;
+
+  /* Layout */
+  --sidebar-width: 220px;
+  --sidebar-collapsed-width: 60px;
+  --topbar-height: 44px;
+}
+
+/* Light Theme */
+.light {
+  --color-background: #ffffff;
+  --color-surface: #f7f7f7;
+  --color-surface-variant: #efefef;
+  --color-surface-hover: #e8e8e8;
+  --color-primary: #191919;
+  --color-secondary: #6b6b6b;
+  --color-text-primary: #191919;
+  --color-text-secondary: #6b6b6b;
+  --color-text-disabled: #a0a0a0;
+  --color-border: #e0e0e0;
+  --color-divider: #ebebeb;
+  --color-icon: #191919;
+  --color-icon-secondary: #6b6b6b;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  font-size: var(--font-size-base);
+  line-height: 1.6; /* Increased from 1.5 for better Arabic legibility */
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* Font Classes - Applied via JS */
+body.font-ar-default {
+  font-family: var(--font-arabic-default);
+  font-weight: 400;
+}
+
+body.font-ar-alt {
+  font-family: var(--font-arabic-alt);
+  font-weight: 300;
+}
+
+body.font-ar-alt2 {
+  font-family: var(--font-arabic-alt2);
+  font-weight: 300;
+}
+
+body.font-en-default {
+  font-family: var(--font-english-default);
+  font-weight: 400;
+}
+
+body.font-en-alt {
+  font-family: var(--font-english-alt);
+  font-weight: 300;
+}
+
+body.font-en-alt2 {
+  font-family: var(--font-english-alt2);
+  font-weight: 300;
+}
+
+/* Scrollbar - Minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Links */
+a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+/* Buttons Base */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+/* Input Base */
+input, textarea, select {
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  background: var(--color-surface-variant);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-secondary);
+}
+
+input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+/* App Layout - Allow smaller window */
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  min-width: 320px;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-background);
+  min-width: 200px;
+}
+
+.page-content {
+  flex: 1;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+/* Utility Classes */
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn { animation: fadeIn 0.2s ease; }
+.animate-slideUp { animation: slideUp 0.2s ease; }
+
+/* RTL */
+[dir="rtl"] .sidebar {
+  border-left: 1px solid var(--color-border);
+  border-right: none;
+}
+[dir="ltr"] .sidebar {
+  border-right: 1px solid var(--color-border);
+  border-left: none;
+}

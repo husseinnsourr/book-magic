@@ -1,0 +1,404 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOOK READER - Professional Design System
+   Notion-Inspired Theme with Comprehensive Tokens
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Import Design System */
+/* Imports moved to index.tsx to avoid PostCSS resolve errors */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEGACY VARIABLES (for backward compatibility)
+   These map to the new token system
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* === Notion-Inspired Theme (mapped to new tokens) === */
+  --notion-bg: var(--bg-app);
+  --notion-bg-secondary: var(--bg-surface);
+  --notion-surface: var(--bg-elevated);
+  --notion-surface-hover: var(--bg-hover);
+  --notion-border: var(--border-default);
+  --notion-text: var(--text-primary);
+  --notion-text-secondary: var(--text-secondary);
+  --notion-text-muted: var(--text-muted);
+  --notion-accent: var(--accent-primary);
+  --notion-accent-hover: var(--accent-primary-hover);
+  --notion-success: var(--color-success);
+  --notion-warning: var(--color-warning);
+  --notion-error: var(--color-error);
+
+  /* === Page Colors (mapped) === */
+  --page-text: var(--page-text);
+  --page-text-secondary: var(--page-text-secondary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTAINER
+   ═══════════════════════════════════════════════════════════════════════════ */
+.reader-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--notion-bg);
+  color: var(--notion-text);
+  overflow: hidden;
+  font-family: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER (Notion Style)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.reader-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height, 48px);
+  padding: 0 var(--space-4, 16px);
+  background: var(--bg-app);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--space-4, 16px);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  flex: 1;
+  min-width: 0;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.header-title {
+  font-size: var(--text-sm, 14px);
+  font-weight: var(--font-medium, 500);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-author {
+  font-size: var(--text-xs, 12px);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+}
+
+/* Edit Mode Toggle Button */
+.edit-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1-5, 6px);
+  padding: var(--space-1-5, 6px) var(--space-3, 12px);
+  font-size: var(--text-sm, 13px);
+  font-weight: var(--font-medium, 500);
+  border-radius: var(--radius-md, 6px);
+  cursor: pointer;
+  transition: all var(--duration-fast, 0.15s) var(--ease-out);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.edit-toggle-btn:hover {
+  background: var(--interactive-hover);
+  color: var(--text-primary);
+}
+
+.edit-toggle-btn.active {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.edit-toggle-btn.active:hover {
+  background: var(--accent-primary-hover);
+}
+
+/* Header Buttons */
+.header-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md, 6px);
+  cursor: pointer;
+  transition: all var(--duration-fast, 0.15s) var(--ease-out);
+}
+
+.header-btn:hover {
+  background: var(--interactive-hover);
+  color: var(--text-primary);
+}
+
+.header-btn.icon-btn {
+  padding: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MAIN LAYOUT
+   ═══════════════════════════════════════════════════════════════════════════ */
+.reader-main-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+  position: relative;
+}
+
+.reader-main-layout.ltr {
+  flex-direction: row;
+}
+
+.reader-content {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  background: var(--notion-bg-secondary);
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ERROR STATE
+   ═══════════════════════════════════════════════════════════════════════════ */
+.error-banner {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid var(--notion-error);
+  border-radius: 8px;
+  color: var(--color-error);
+  font-size: 14px;
+  z-index: 200;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+  to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+.error-banner .error-icon {
+  flex-shrink: 0;
+}
+
+.error-banner .error-message {
+  flex: 1;
+}
+
+.error-banner .error-retry-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1, 4px);
+  padding: var(--space-1, 4px) var(--space-3, 12px);
+  background: var(--color-error);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md, 4px);
+  font-size: var(--text-xs, 12px);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.error-banner .error-retry-btn:hover {
+  background: var(--color-error-hover);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SETTINGS PANEL
+   ═══════════════════════════════════════════════════════════════════════════ */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal, 500);
+  animation: fadeIn var(--duration-fast) var(--ease-out);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.settings-panel {
+  width: 100%;
+  max-width: 400px;
+  max-height: 80vh;
+  padding: var(--space-6, 24px);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl, 12px);
+  box-shadow: var(--shadow-2xl);
+  overflow-y: auto;
+  animation: scaleIn var(--duration-normal) var(--ease-out-expo);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.settings-panel h3 {
+  margin: 0 0 var(--space-6, 24px);
+  font-size: var(--text-lg, 18px);
+  font-weight: var(--font-semibold, 600);
+  color: var(--text-primary);
+}
+
+.setting-group {
+  margin-bottom: var(--space-5, 20px);
+}
+
+.setting-group label {
+  display: block;
+  margin-bottom: var(--space-2, 8px);
+  font-size: var(--text-sm, 14px);
+  font-weight: var(--font-medium, 500);
+  color: var(--text-secondary);
+}
+
+.theme-buttons {
+  display: flex;
+  gap: var(--space-2, 8px);
+}
+
+.theme-buttons button {
+  flex: 1;
+  padding: var(--space-2, 8px) var(--space-3, 12px);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md, 6px);
+  color: var(--text-secondary);
+  font-size: var(--text-sm, 14px);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.theme-buttons button:hover {
+  background: var(--interactive-hover);
+  color: var(--text-primary);
+}
+
+.theme-buttons button.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+.setting-group input[type="range"] {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-surface);
+  border-radius: 2px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.setting-group input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.setting-group input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* Print Styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .reader-container {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  /* Hide UI */
+  .reader-header,
+  .reader-dock,
+  .dock-panel,
+  .selection-toolbar,
+  .floating-controls,
+  .settings-overlay,
+  .error-banner,
+  .reading-progress-container,
+  .loading-skeleton, 
+  .immersive-mode-overlay {
+    display: none !important;
+  }
+
+  /* Content */
+  .a4-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    min-height: auto !important;
+    width: 100% !important;
+    page-break-after: always;
+    overflow: visible !important;
+  }
+
+  /* Typography for print */
+  .reader-content {
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+    color: black !important;
+  }
+}
